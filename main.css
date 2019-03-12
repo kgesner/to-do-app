@@ -1,0 +1,26 @@
+
+
+h1 {
+  width: 255px;
+  font-size: 4rem;
+  margin: auto;
+}
+
+ul {
+  width: 320px;
+  margin: auto;
+}
+
+ul.deleteToDoForm {
+  margin: auto;
+  width: 320px;
+  padding-top: 10px;
+}
+
+ul.addToDoForm {
+  width: 320px;
+}
+
+.mdl-textfield .mdl-button {
+    left: 190px;
+}

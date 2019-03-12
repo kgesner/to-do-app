@@ -3,6 +3,9 @@ function onReady() {
   const newToDoText= document.getElementById ('newToDoText');
   const toDoList = document.getElementById('toDoList');
 
+  const deleteToDoForm = document.getElementById('deleteToDoForm');
+
+
 // Event Listener
   addToDoForm.addEventListener('submit', event => {
     event.preventDefault();
