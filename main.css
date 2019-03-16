@@ -1,24 +1,24 @@
 
 
+body {
+  padding: 30px;
+}
+
 h1 {
-  width: 255px;
   font-size: 4rem;
-  margin: auto;
 }
 
 ul {
   width: 320px;
-  margin: auto;
 }
 
-ul.deleteToDoForm {
-  margin: auto;
+.addToDoForm {
   width: 320px;
-  padding-top: 10px;
 }
 
-ul.addToDoForm {
-  width: 320px;
+#mdl-custom .mdl-textfield__input {
+  width: 75%;
+  margin: 10px;
 }
 
 .mdl-textfield .mdl-button {
