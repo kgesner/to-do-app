@@ -1,42 +1,52 @@
-function onReady() {
-  const toDos = [];
-  const addToDoForm = document.getElementById('addToDoForm');  //  access HTML form
+function renderTheUI(){
+    const TODO_LIST = document.getElementById('toDoList');
+    TODO_LIST.textContent = '';
 
-  function createNewToDo() {  // Will uodate array of to-dos
-    const newToDoText = document.getElementById('newToDoText'); // Accesses text input for text of to-dos 'title'
-    if (!newToDoText.value) { return; }  //  prevent adding empty to-do items
+      toDos.forEach(function(toDo){
+        const NEW_LI = document.createElement('li');
+        const CHECKBOX = document.createElement('input');
+        CHECKBOX.type = 'checkbox';
 
-    toDos.push({  // adds new to-do to toDos array using 'push'
-      title: newToDoText.value,  //  assign value of newToDoText to 'title' key
-      complete:false  //  create key called 'complete' intialized to 'false'
-    });
+        const DELETE_BTN = document.createElement('button');
+        DELETE_BTN.textContent = 'Delete';
 
-    newToDoText.value = '';  //  clears text input for user
+        DELETE_BTN.addEventListener('click', event => {
+          toDos = toDos.filter(function(item){
+            return item.id !== toDo.id;
+          })
 
-    renderTheUI();  //  call renderTheUI() each time the state changes
+          renderTheUI();
+        });
+
+        NEW_LI.textContent = toDo.title;
+
+        TODO_LIST.appendChild(NEW_LI);
+        NEW_LI.appendChild(CHECKBOX);
+        NEW_LI.appendChild(DELETE_BTN);
+      })
   }
 
-  addToDoForm.addEventListener('submit', event => {  //  add EventListener
-    event.preventDefault();  //  prevent page from reloading
-    createNewToDo();  //  call function
-  })
-
-  renderTheUI() {  //  call this function to onReady to immediately render initial UI
-    const toDoList = document.getElementById('toDoList');  //  access 'ul' in HTML
-
-    toDoList.textContent = '';  //  set newLi to empty string
-
-    toDos.forEach(function(toDo) {  //  applies function to each item in array, renders to-do as 'li' in 'ul'
-      const newLi = document.createElement('li');  //  create 'li'
-      const checkbox = document.createElement('input');  //  create checkbox
-      checkbox.type = "checkbox";
-
-      newLi.textContent = toDo.title;  //  assign toDo's title to newLi
-
-      toDoList.appendChild(newLi);  //  update the DOM
-      newLi.appendChild(checkbox);
+  function createNewToDo(){  //  get title from toDo and push it to array
+    const NEW_TODO_TEXT = document.getElementById('newToDoText');
+    if(!NEW_TODO_TEXT.value){ return; }
+    toDos.push({
+      title: NEW_TODO_TEXT.value,
+      complete: false,
+      id: id
     });
-  };
+
+    id++;
+
+    NEW_TODO_TEXT.value = '';
+    renderTheUI();
+  }
+
+  ADD_TODO_FORM.addEventListener('submit', event => {
+    event.preventDefault();
+    createNewToDo();
+  });
+
+  renderTheUI();
 }
 
 window.onload = function() {
