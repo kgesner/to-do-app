@@ -1,4 +1,9 @@
-function renderTheUI(){
+function onReady() {
+  const ADD_TODO_FORM = document.getElementById('addToDoForm');
+  let toDos = [];
+  let id = 0;
+
+  function renderTheUI(){
     const TODO_LIST = document.getElementById('toDoList');
     TODO_LIST.textContent = '';
 
